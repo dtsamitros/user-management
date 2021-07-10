@@ -1,0 +1,55 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dimitris Tsamitros",
+      "groups": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Clint Eastwood",
+      "groups": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "name": "James Bond",
+      "groups": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Will Smith",
+      "groups": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Donald Duck",
+      "groups": [
+        3
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Directors"
+    },
+    {
+      "id": 2,
+      "name": "Actors"
+    },
+    {
+      "id": 3,
+      "name": "Cartoon Characters"
+    }
+  ]
+}
