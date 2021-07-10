@@ -13,4 +13,16 @@ export class UserService {
     return this.http.get<User[]>('/api/users');
   }
 
+  getById(id: string): Observable<User> {
+    return this.http.get<User>(`/api/users/${id}`);
+  }
+
+  update(id: string, updates: Partial<User>): Observable<User> {
+    return this.http.put<User>(`/api/users/${id}`, updates);
+  }
+
+  create(data: Partial<User>) {
+    return this.http.post('/api/users', data);
+  }
+
 }

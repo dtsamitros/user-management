@@ -1,0 +1,15 @@
+.avatar img {
+  width: 110px;
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+img {
+  border-style: none;
+}
+.text-muted {
+  color: #aeb0b4 !important;
+}
+.text-muted {
+  font-weight: 300;
+}

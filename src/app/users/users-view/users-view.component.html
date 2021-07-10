@@ -1,0 +1,23 @@
+<div class="row mt-5 align-items-center" *ngIf="user$ | async as user else loadingTemplate">
+  <div class="col-md-3 text-center">
+    <div class="avatar">
+      <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+           alt="Gravatar Image" class="rounded-circle" />
+    </div>
+  </div>
+  <div class="col">
+    <h4 class="mb-1">{{ user.name }}</h4>
+    <p class="mb-3">{{ user.email }}</p>
+    <p class="mb-3" *ngIf="user.description">
+      <strong>Description:</strong><br />{{ user.description }}</p>
+    <p class="mb-3">
+      <a [routerLink]="['/users/edit/', user.id]" class="btn btn-primary mr-3">Edit user</a>
+      <a [routerLink]="['/users']" class="btn btn-primary">Return to listing</a>
+    </p>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <p><span class="spinner-border spinner-border-sm mr-1"></span> Loading, please wait...</p>
+</ng-template>
+
