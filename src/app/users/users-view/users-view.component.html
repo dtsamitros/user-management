@@ -2,17 +2,25 @@
   <div class="col-md-3 text-center">
     <div class="avatar">
       <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
-           alt="Gravatar Image" class="rounded-circle" />
+           alt="Gravatar Image" class="rounded-circle"/>
     </div>
   </div>
   <div class="col">
     <h4 class="mb-1">{{ user.name }}</h4>
     <p class="mb-3">{{ user.email }}</p>
-    <p class="mb-3" *ngIf="user.description">
-      <strong>Description:</strong><br />{{ user.description }}</p>
+    <p class="mb-3" *ngIf="user.comments">
+      <strong>Comments:</strong><br/>{{ user.comments }}</p>
     <p class="mb-3">
-      <a [routerLink]="['/users/edit/', user.id]" class="btn btn-primary mr-3">Edit user</a>
-      <a [routerLink]="['/users']" class="btn btn-primary">Return to listing</a>
+      <strong>In groups:</strong><br/>
+      <span *ngFor="let group of user.groups; let isLast=last">
+        <a [routerLink]="['/groups/view', group.id]">{{ group.name }}</a>{{ isLast ? '' : ', ' }}
+      </span>
+    </p>
+    <p class="mb-3">
+      <a [routerLink]="['/users/edit/', user.id]" class="btn btn-primary mr-3">
+        <i class="bi-card-heading"></i> Edit user</a>
+      <a [routerLink]="['/users']" class="btn btn-primary">
+        <i class="bi-arrow-left"></i> Return to user's listing</a>
     </p>
   </div>
 </div>

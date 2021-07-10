@@ -1,0 +1,54 @@
+<div *ngIf="group$ | async as group else loadingTemplate">
+
+  <div class="row">
+    <div class="col">
+      <h2>Group: {{ group.name }}</h2>
+      <p><strong>Description:</strong> {{ group.description }}</p>
+      <p class="mb-3">
+        <a [routerLink]="['/groups/edit/', group.id]" class="btn btn-primary mr-3">
+          <i class="bi-card-heading"></i> Edit group</a>
+        <a [routerLink]="['/groups']" class="btn btn-primary">
+          <i class="bi-arrow-left"></i> Return to group's listing</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h2 class="mb-3">Users in group</h2>
+      <table class="table table-hover" *ngIf="group.users?.length else noUsersTemplate">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of group.users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <a [routerLink]="['/users/edit', user.id]" class="btn btn-primary btn-sm mr-2">Edit</a>
+            <button
+                *ngIf="user.groupIds.length > 1"
+                class="btn btn-danger btn-sm" (click)="removeUserFromGroup(user, group)">Remove from group</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <ng-template #noUsersTemplate>
+        <p>There are currently no users in the group</p>
+      </ng-template>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loadingTemplate>
+  <p><span class="spinner-border spinner-border-sm mr-1"></span> Loading, please wait...</p>
+</ng-template>
+

@@ -1,4 +1,7 @@
-<a routerLink="/users/new" class="btn btn-sm btn-success mb-2">Add new user</a>
+<h2>Users</h2>
+
+<a routerLink="/users/new" class="btn btn-sm btn-success mb-2">
+  <i class="bi-plus"></i> Add new user</a>
 
 <table class="table table-hover" *ngIf="users$ | async as users else loadingTemplate">
   <thead>
@@ -17,12 +20,13 @@
     <td>{{ user.email }}</td>
     <td>
       <span *ngFor="let group of user.groups; let isLast=last">
-        <a href="/groups/{{ group.id }}">{{ group.name }}</a>{{ isLast ? '' : ', ' }}
+        <a [routerLink]="['/groups/view', group.id]">{{ group.name }}</a>{{ isLast ? '' : ', ' }}
       </span>
     </td>
     <td>
-      <a [routerLink]="['/users/view', user.id]" class="btn btn-primary btn-sm mr-2">View</a>
-      <a [routerLink]="['/users/edit', user.id]" class="btn btn-primary btn-sm">Edit</a>
+      <a [routerLink]="['/users/view', user.id]" class="btn btn-primary btn-sm mr-2"><i class="bi-card-heading"></i> View</a>
+      <a [routerLink]="['/users/edit', user.id]" class="btn btn-primary btn-sm mr-2"><i class="bi-pen"></i> Edit</a>
+      <button class="btn btn-danger btn-sm" (click)="deleteUser(user)"><i class="bi-x"></i> Delete</button>
     </td>
   </tr>
   </tbody>

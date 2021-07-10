@@ -20,4 +20,12 @@ export class UsersListComponent implements OnInit {
     this.users$ = this.userService.getAll();
   }
 
+  deleteUser(user: User) {
+    if (confirm(`Are you sure to delete ${user.name}?`)) {
+      this.userService.delete(user.id).subscribe(() => {
+        this.users$ = this.userService.getAll();
+      });
+    }
+  }
+
 }

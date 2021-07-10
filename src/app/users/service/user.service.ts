@@ -25,4 +25,8 @@ export class UserService {
     return this.http.post('/api/users', data);
   }
 
+  delete(id: number) {
+    return this.http.delete(`/api/users/${id}`);
+  }
+
 }
