@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Groups</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users$ | async">
+    <td>{{ user.id }}</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <span *ngFor="let group of user.groups; let isLast=last">
+        <a href="/groups/{{ group.id }}">{{ group.name }}</a>{{ isLast ? '' : ', ' }}
+      </span>
+    </td>
+    <td>
+      <button class="btn btn-primary">Show details</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
