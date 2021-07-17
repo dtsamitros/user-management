@@ -110,7 +110,7 @@ app.route('/groups/:id').put((req, res) => {
   const id = req.params.id;
   const updates = req.body;
 
-  GROUPS[id] = { ...GROUPS[id], ...updates, id };
+  GROUPS[id] = { ...GROUPS[id], ...updates, id: +id };
   res.status(200).json(injectUsersInGroup(GROUPS[id]));
 });
 
